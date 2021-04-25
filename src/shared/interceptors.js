@@ -13,13 +13,13 @@ const err = error => {
     //重试次数自增
     config.__retryCount += 1;
     //延时处理
-    let backoff = new Promise(function(resolve) {
-      setTimeout(function() {
+    let backoff = new Promise(resolve => {
+      setTimeout(() => {
         resolve();
       }, 3);
     });
     //重新发起axios请求
-    return backoff.then(function() {
+    return backoff.then(() => {
       return http(config);
     });
   }
@@ -81,7 +81,7 @@ const err = error => {
 
 export default function interceptors(axios) {
   // Add a request interceptor
-  axios.interceptors.request.use(function(config) {
+  axios.interceptors.request.use(config => {
     // Do something before request is sent
 
     /*such as setting token header*/
@@ -91,7 +91,7 @@ export default function interceptors(axios) {
   }, err);
 
   // Add a response interceptor
-  axios.interceptors.response.use(function(response) {
+  axios.interceptors.response.use(response => {
     let { code, data, error } = response.data;
     if (code === 0) {
       return data;

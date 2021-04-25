@@ -13,8 +13,8 @@ export default class PeopleService {
     return PeopleService.instance;
   }
 
-  getPeopleList = async () => {
-    const res = await API.people.getPeopleList();
+  getList = async () => {
+    const res = await API.people.getList();
     return res.list;
   };
 }

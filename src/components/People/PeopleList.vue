@@ -30,7 +30,7 @@ export default {
   mixins: [peopleMixin],
 
   created() {
-    this.getPeopleList();
+    this.getList();
   },
 
   computed: {
@@ -39,10 +39,10 @@ export default {
 
   methods: {
     ...mapMutations("people", [SET_PEOPLE_LIST]),
-    async getPeopleList() {
+    async getList() {
       this.loading = true;
 
-      await this.$store.dispatch("people/getPeopleList"); // 错误情况已在拦截器处理
+      await this.$store.dispatch("people/getList"); // 错误情况已在拦截器处理
 
       this.loading = false;
     },
